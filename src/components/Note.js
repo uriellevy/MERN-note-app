@@ -1,11 +1,11 @@
 import { FaTrash } from "react-icons/fa";
 
-const Note = () => {
+const Note = ({ id, text, date }) => {
   return (
     <div className="note">
-      <span>gfgfdsfdsgfgfdsgfgd</span>
+      <span>{text}</span>
       <div className="note-footer">
-        <small>13/2/2021</small>
+        <small>{date}</small>
         <FaTrash className="delete-icon" size="1.3em" />
       </div>
     </div>
