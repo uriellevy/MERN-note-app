@@ -1,6 +1,9 @@
 import { FaTrash } from "react-icons/fa";
 
 const Note = ({ id, text, date, handleDeleteNote }) => {
+  const removeNote = (id) => {
+    handleDeleteNote(id);
+  };
   return (
     <div className="note">
       <span>{text}</span>
@@ -9,7 +12,7 @@ const Note = ({ id, text, date, handleDeleteNote }) => {
         <FaTrash
           className="delete-icon"
           size="1.3em"
-          onClick={() => handleDeleteNote(id)}
+          onClick={() => removeNote(id)}
         />
       </div>
     </div>

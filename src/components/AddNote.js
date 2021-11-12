@@ -12,7 +12,28 @@ const AddNote = ({ handleAddNote }) => {
 
   const handleSaveClick = () => {
     if (noteText.trim().length > 0) {
+      const myHeaders = new Headers();
+      myHeaders.append("content-type", "application/json");
+
+      const raw = JSON.stringify({
+        text: noteText,
+        date: Date.now(),
+      });
+
+      const requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow",
+      };
+
+      fetch("http://localhost:5001/notes", requestOptions)
+        .then((response) => response.text())
+        .then((result) => console.log(result))
+        .catch((error) => console.log("error", error));
+
       handleAddNote(noteText);
+      console.log(noteText);
       setNoteText("");
     }
   };
